@@ -79,7 +79,4 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: crud_rails_api_production
-  username: crud_rails_api
-  password: <%= ENV['CRUD_RAILS_API_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>

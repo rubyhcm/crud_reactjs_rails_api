@@ -102,4 +102,14 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+  config.middleware.insert_before 0, Rack::Cors do
+    allow do
+      origins 'https://reactjs-crud.onrender.com' # Thay đổi domain của trang web ReactJS của bạn
+      resource '*',
+        headers: :any,
+        methods: [:get, :post, :put, :patch, :delete, :options, :head],
+        credentials: true
+    end
+  end
+  Rails.application.config.hosts << "rails-crud-basic.onrender.com" # Chấp nhận mọi hostname trong domain onrender.com
 end
